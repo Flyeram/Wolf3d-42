@@ -6,7 +6,7 @@
 /*   By: tbalu <tbalu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/16 12:57:32 by tbalu             #+#    #+#             */
-/*   Updated: 2016/03/02 15:55:19 by tbalu            ###   ########.fr       */
+/*   Updated: 2016/03/02 17:21:39 by tbalu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,6 @@ struct			s_vector
 	double		x;
 	double		y;
 	double		z;
-};
-
-struct			s_dist
-{
-	t_vector	x;
-	t_vector	y;
 };
 
 struct			s_image
@@ -49,6 +43,8 @@ struct			s_camera
 {
 	t_vector	origin;
 	t_vector	dir;
+	t_vector	ray_dir;
+	t_vector	plane;
 };
 
 struct			s_map_data
@@ -58,6 +54,14 @@ struct			s_map_data
 	int		sizey_ar;
 };
 
+struct			s_value
+{
+	t_vector	side_dist;
+	t_vector	step;
+	t_vector	delta_dist;
+	double		perp_wall_dist;
+};
+
 struct			s_env
 {
 	t_image			*image;
@@ -65,8 +69,9 @@ struct			s_env
 	void			*win;
 	t_vector		win_size;
 	t_camera		*camera;
-	double			win_ratio;
 	t_map_data		*map_data;
+	t_value			*value;
+	double			win_ratio;
 };
 
 /*

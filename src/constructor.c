@@ -6,7 +6,7 @@
 /*   By: tbalu <tbalu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/23 13:01:05 by tbalu             #+#    #+#             */
-/*   Updated: 2016/03/02 15:53:51 by tbalu            ###   ########.fr       */
+/*   Updated: 2016/03/02 16:53:14 by tbalu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,5 +112,8 @@ t_env		*constructor_env(int win_x, int win_y, char *file_name)
 	ft_bzero(env->map_data, sizeof(t_map_data));
 	if (constructor_map(env, file_name) == 0)
 		return (0);
+	if (!(env->value = (t_value *)malloc(sizeof(t_value))))
+		return (0);
+	ft_bzero(env->value, sizeof(t_value));
 	return (env);
 }
