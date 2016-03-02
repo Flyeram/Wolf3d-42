@@ -6,7 +6,7 @@
 /*   By: tbalu <tbalu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/16 12:57:32 by tbalu             #+#    #+#             */
-/*   Updated: 2016/03/02 13:37:18 by tbalu            ###   ########.fr       */
+/*   Updated: 2016/03/02 15:55:19 by tbalu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,13 @@ struct			s_camera
 	t_vector	dir;
 };
 
+struct			s_map_data
+{
+	int		**map;
+	int		sizex_ar;
+	int		sizey_ar;
+};
+
 struct			s_env
 {
 	t_image			*image;
@@ -59,6 +66,7 @@ struct			s_env
 	t_vector		win_size;
 	t_camera		*camera;
 	double			win_ratio;
+	t_map_data		*map_data;
 };
 
 /*
@@ -82,7 +90,7 @@ void			clear_image(t_image *image);
 */
 
 int				constructor(t_env *env, char *fname);
-t_env			*constructor_env(int win_x, int win_y);
+t_env			*constructor_env(int win_x, int win_y, char *file_name);
 
 /*
 **draw_image
@@ -95,8 +103,6 @@ void			draw_loop(t_env *env);
 */
 
 int				press_key(int key_code, t_env *env);
-int				mouse(int button, int x, int y, t_env *env);
-int				mouse_motion(int x, int y, t_env *env);
 int				expose(t_env *env);
 
 /*

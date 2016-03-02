@@ -6,7 +6,7 @@
 /*   By: tbalu <tbalu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/02 18:51:46 by tbalu             #+#    #+#             */
-/*   Updated: 2016/03/02 13:30:46 by tbalu            ###   ########.fr       */
+/*   Updated: 2016/03/02 15:56:10 by tbalu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,3 +14,10 @@
 #include <stdlib.h>
 #include <libft.h>
 #include <math.h>
+
+void			draw_loop(t_env *env)
+{
+	int	i;
+
+	i = env->win_size.x;
+}

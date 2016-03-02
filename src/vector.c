@@ -6,11 +6,11 @@
 /*   By: tbalu <tbalu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/02 17:24:34 by tbalu             #+#    #+#             */
-/*   Updated: 2016/02/22 11:46:52 by tbalu            ###   ########.fr       */
+/*   Updated: 2016/03/02 15:54:24 by tbalu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <rt_v.h>
+#include <wolf3d.h>
 #include <math.h>
 #include <stdlib.h>
 

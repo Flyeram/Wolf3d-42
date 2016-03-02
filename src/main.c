@@ -6,7 +6,7 @@
 /*   By: tbalu <tbalu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/08 12:46:20 by tbalu             #+#    #+#             */
-/*   Updated: 2016/03/02 13:31:01 by tbalu            ###   ########.fr       */
+/*   Updated: 2016/03/02 16:07:18 by tbalu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,7 @@ int			main(int ac, char **av)
 
 	if (ac != 2)
 		return (0);
-	env = constructor_env(1080, 720);
-	if (env->scene == NULL)
+	if (!(env = constructor_env(1080, 720, av[1])))
 		return (0);
 	executor(env);
 	return (0);
