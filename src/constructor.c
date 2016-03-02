@@ -6,11 +6,11 @@
 /*   By: tbalu <tbalu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/23 13:01:05 by tbalu             #+#    #+#             */
-/*   Updated: 2016/02/27 12:44:26 by tbalu            ###   ########.fr       */
+/*   Updated: 2016/03/02 13:30:53 by tbalu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <rt_v.h>
+#include <wolf3d.h>
 #include <libft.h>
 #include <mlx.h>
 #include <stdlib.h>
@@ -28,6 +28,7 @@ t_env		*constructor_env(int win_x, int win_y)
 	(*env).image = create_image((*env).mlx, win_x, win_y);
 	(*env).win_size.x = win_x;
 	(*env).win_size.y = win_y;
+	(*env).win_ratio = (double)win_x / (double)win_y;
 	if (!((*env).camera = (t_camera *)malloc(sizeof(t_camera))))
 		return (0);
 	return (env);

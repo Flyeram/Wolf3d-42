@@ -6,14 +6,14 @@
 /*   By: tbalu <tbalu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/08 12:46:20 by tbalu             #+#    #+#             */
-/*   Updated: 2016/02/27 12:47:37 by tbalu            ###   ########.fr       */
+/*   Updated: 2016/03/02 13:31:01 by tbalu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <mlx.h>
 #include <libft.h>
 #include <unistd.h>
-#include <rt_v.h>
+#include <wolf3d.h>
 #include <stdlib.h>
 
 /*
@@ -35,9 +35,6 @@ int			main(int ac, char **av)
 	if (ac != 2)
 		return (0);
 	env = constructor_env(1080, 720);
-	env->camera->origin = create_vector(500, -100.0f, -1000.0f);
-	env->scene = constructor_scene(av[1]);
-	env->win_ratio = (double)env->win_size.x / (double)env->win_size.y;
 	if (env->scene == NULL)
 		return (0);
 	executor(env);

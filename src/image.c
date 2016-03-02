@@ -6,12 +6,12 @@
 /*   By: tbalu <tbalu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/23 11:02:21 by tbalu             #+#    #+#             */
-/*   Updated: 2016/02/03 16:41:16 by tbalu            ###   ########.fr       */
+/*   Updated: 2016/03/02 13:31:08 by tbalu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <mlx.h>
-#include <rt_v.h>
+#include <wolf3d.h>
 #include <stdlib.h>
 #include <libft.h>
 

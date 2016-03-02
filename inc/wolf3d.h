@@ -6,7 +6,7 @@
 /*   By: tbalu <tbalu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/16 12:57:32 by tbalu             #+#    #+#             */
-/*   Updated: 2016/02/27 12:46:01 by tbalu            ###   ########.fr       */
+/*   Updated: 2016/03/02 13:37:18 by tbalu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@ struct			s_vector
 	double		z;
 };
 
-struct			s_ray
+struct			s_dist
 {
-	t_vector	start;
-	t_vector	dir;
+	t_vector	x;
+	t_vector	y;
 };
 
 struct			s_image
@@ -48,9 +48,7 @@ struct			s_color
 struct			s_camera
 {
 	t_vector	origin;
-	double		pitch;
-	double		yaw;
-	double		roll;
+	t_vector	dir;
 };
 
 struct			s_env
