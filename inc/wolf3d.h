@@ -6,7 +6,7 @@
 /*   By: tbalu <tbalu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/16 12:57:32 by tbalu             #+#    #+#             */
-/*   Updated: 2016/03/02 17:21:39 by tbalu            ###   ########.fr       */
+/*   Updated: 2016/03/03 17:12:07 by tbalu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ struct			s_camera
 	t_vector	dir;
 	t_vector	ray_dir;
 	t_vector	plane;
+	t_vector	speed;
 };
 
 struct			s_map_data
@@ -80,6 +81,7 @@ struct			s_env
 
 unsigned int	create_color(int a, int r, int g, int b);
 t_color			color_percent(double r, double g, double b);
+unsigned int	color_wall(t_env *env, int side);
 
 /*
 **image
@@ -119,5 +121,11 @@ double			dot_product(t_vector *a, t_vector *b);
 t_vector		substract_vector(t_vector *a, t_vector *b);
 t_vector		add_vector(t_vector *a, t_vector *b);
 t_vector		vector_scale(t_vector *a, double k);
+
+/*
+** draw_verti
+*/
+
+void			draw_vertical(t_env *env, t_vector *limit, int x, int color);
 
 #endif

@@ -6,7 +6,7 @@
 #    By: tbalu <tbalu@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/26 18:04:58 by adubois           #+#    #+#              #
-#    Updated: 2016/02/27 12:39:04 by tbalu            ###   ########.fr        #
+#    Updated: 2016/03/03 14:51:46 by tbalu            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,8 @@ CC = gcc
 CFLAGS = -Wall -Werror -Wextra -O3
 INC_PATH = -I./inc/ -I./libft/ -I./minilibx_macos/
 SRC_PATH = ./src/
-SRCS = main.c image.c constructor.c events.c color.c vector.c draw_image.c
+SRCS = main.c image.c constructor.c events.c color.c vector.c draw_image.c \
+draw_verti.c
 FLAGSMLX = -L minilibx_macos/ -lmlx -framework OpenGL -framework AppKit
 FLAGSLIBFT = -L libft/ -lft
 SRC = $(SRCS:%.c=$(SRC_PATH)%.c)
