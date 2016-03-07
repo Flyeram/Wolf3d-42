@@ -6,7 +6,7 @@
 /*   By: tbalu <tbalu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/12 11:15:33 by tbalu             #+#    #+#             */
-/*   Updated: 2016/03/07 12:24:33 by tbalu            ###   ########.fr       */
+/*   Updated: 2016/03/07 15:17:24 by tbalu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,13 @@
 
 int			expose(t_env *env)
 {
+	int		modulo;
+
+	modulo = (env->texture->weapon_pos / 4) % 2;
 	mlx_put_image_to_window(env->mlx, env->win, env->image->img, 0, 0);
-	mlx_put_image_to_window(env->mlx, env->win, env->texture->weapon->img,
-		500, 500);
+	mlx_put_image_to_window(env->mlx, env->win,
+		env->texture->weapon[env->texture->weapon_number]->img, 500,
+		550 - (20 * modulo));
 	return (1);
 }
 
@@ -65,7 +69,7 @@ int			press_key_rotate(int key_code, t_env *env)
 	if (key_code == 124)
 		rotate_right(env);
 	draw_loop(env);
-	return (expose(env));
+	return (change_weapon(key_code, env));
 }
 
 int			press_key(int key_code, t_env *env)
@@ -74,6 +78,7 @@ int			press_key(int key_code, t_env *env)
 		exit(3);
 	if (key_code == 126)
 	{
+		env->texture->weapon_pos++;
 		if (env->map_data->map[(int)(env->camera->origin.x + env->camera->dir.x
 		* env->camera->speed.x)][(int)(env->camera->origin.y)] == 0)
 			env->camera->origin.x += env->camera->dir.x * env->camera->speed.x;
@@ -84,6 +89,7 @@ int			press_key(int key_code, t_env *env)
 	}
 	if (key_code == 125)
 	{
+		env->texture->weapon_pos++;
 		if (env->map_data->map[(int)(env->camera->origin.x - env->camera->dir.x
 		* env->camera->speed.x)][(int)env->camera->origin.y] == 0)
 			env->camera->origin.x -= env->camera->dir.x * env->camera->speed.x;

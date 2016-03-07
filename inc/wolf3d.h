@@ -6,7 +6,7 @@
 /*   By: tbalu <tbalu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/16 12:57:32 by tbalu             #+#    #+#             */
-/*   Updated: 2016/03/07 12:13:52 by tbalu            ###   ########.fr       */
+/*   Updated: 2016/03/07 15:11:55 by tbalu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,10 @@ struct			s_value
 
 struct			s_texture
 {
-	t_image		*weapon;
+	int				weapon_number;
+	unsigned int	weapon_pos;
+	t_image			*weapon[3];
+	t_image			*wall[4];
 };
 
 struct			s_env
@@ -82,7 +85,7 @@ struct			s_env
 };
 
 /*
-**color
+** color
 */
 
 unsigned int	create_color(int a, int r, int g, int b);
@@ -90,7 +93,7 @@ t_color			color_percent(double r, double g, double b);
 unsigned int	color_wall(t_env *env, int side);
 
 /*
-**image
+** image
 */
 
 t_image			*create_image(void *mlx, int width, int height);
@@ -100,27 +103,28 @@ void			clear_image(t_image *image);
 t_image			*create_xpm(void *mlx, char *file_name);
 
 /*
-**constructor
+** constructor
 */
 
 int				constructor(t_env *env, char *fname);
 t_env			*constructor_env(int win_x, int win_y, char *file_name);
 
 /*
-**draw_image
+** draw_image
 */
 
 void			draw_loop(t_env *env);
 
 /*
-**events
+** events
 */
 
 int				press_key(int key_code, t_env *env);
 int				expose(t_env *env);
+int				change_weapon(int key_code, t_env *env);
 
 /*
-**vector
+** vector
 */
 
 t_vector		create_vector(double x, double y, double z);
@@ -134,5 +138,11 @@ t_vector		vector_scale(t_vector *a, double k);
 */
 
 void			draw_vertical(t_env *env, t_vector *limit, int x, int color);
+
+/*
+** loader
+*/
+
+int				loader_texture(t_env *env);
 
 #endif
