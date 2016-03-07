@@ -6,7 +6,7 @@
 /*   By: tbalu <tbalu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/08 12:46:20 by tbalu             #+#    #+#             */
-/*   Updated: 2016/03/03 16:34:56 by tbalu            ###   ########.fr       */
+/*   Updated: 2016/03/07 12:35:28 by tbalu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ int			main(int ac, char **av)
 	env->camera->dir = create_vector(-1.1, 0, 0);
 	env->camera->plane = create_vector(0, 0.66, 0);
 	env->camera->speed = create_vector(0.25, 0.05, 0);
+	env->texture->weapon = create_xpm(env->mlx, "texture/thon.xpm");
 	executor(env);
 	return (0);
 }

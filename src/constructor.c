@@ -6,7 +6,7 @@
 /*   By: tbalu <tbalu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/23 13:01:05 by tbalu             #+#    #+#             */
-/*   Updated: 2016/03/02 16:53:14 by tbalu            ###   ########.fr       */
+/*   Updated: 2016/03/07 12:20:02 by tbalu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,8 @@ t_env		*constructor_env(int win_x, int win_y, char *file_name)
 	(*env).win_size.x = win_x;
 	(*env).win_size.y = win_y;
 	(*env).win_ratio = (double)win_x / (double)win_y;
+	if (!((*env).texture = (t_texture *)malloc(sizeof(t_texture))))
+		return (0);
 	if (!((*env).camera = (t_camera *)malloc(sizeof(t_camera))))
 		return (0);
 	if (!((*env).map_data = (t_map_data *)malloc(sizeof(t_map_data))))

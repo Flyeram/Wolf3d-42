@@ -6,7 +6,7 @@
 /*   By: tbalu <tbalu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/12 11:15:33 by tbalu             #+#    #+#             */
-/*   Updated: 2016/03/03 16:34:21 by tbalu            ###   ########.fr       */
+/*   Updated: 2016/03/07 12:24:33 by tbalu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 int			expose(t_env *env)
 {
 	mlx_put_image_to_window(env->mlx, env->win, env->image->img, 0, 0);
+	mlx_put_image_to_window(env->mlx, env->win, env->texture->weapon->img,
+		500, 500);
 	return (1);
 }
 
@@ -63,8 +65,7 @@ int			press_key_rotate(int key_code, t_env *env)
 	if (key_code == 124)
 		rotate_right(env);
 	draw_loop(env);
-	mlx_put_image_to_window(env->mlx, env->win, env->image->img, 0, 0);
-	return (0);
+	return (expose(env));
 }
 
 int			press_key(int key_code, t_env *env)

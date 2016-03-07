@@ -6,7 +6,7 @@
 /*   By: tbalu <tbalu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/16 12:57:32 by tbalu             #+#    #+#             */
-/*   Updated: 2016/03/03 17:12:07 by tbalu            ###   ########.fr       */
+/*   Updated: 2016/03/07 12:13:52 by tbalu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,11 @@ struct			s_value
 	double		perp_wall_dist;
 };
 
+struct			s_texture
+{
+	t_image		*weapon;
+};
+
 struct			s_env
 {
 	t_image			*image;
@@ -72,6 +77,7 @@ struct			s_env
 	t_camera		*camera;
 	t_map_data		*map_data;
 	t_value			*value;
+	t_texture		*texture;
 	double			win_ratio;
 };
 
@@ -91,6 +97,7 @@ t_image			*create_image(void *mlx, int width, int height);
 void			image_put_pixel(t_env env, int x, int y,
 				unsigned int color);
 void			clear_image(t_image *image);
+t_image			*create_xpm(void *mlx, char *file_name);
 
 /*
 **constructor

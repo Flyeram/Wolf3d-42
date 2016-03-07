@@ -6,7 +6,7 @@
 /*   By: tbalu <tbalu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/23 11:02:21 by tbalu             #+#    #+#             */
-/*   Updated: 2016/03/02 13:31:08 by tbalu            ###   ########.fr       */
+/*   Updated: 2016/03/07 12:19:30 by tbalu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,4 +65,25 @@ void		image_put_pixel(t_env env, int x, int y, unsigned int color)
 		off_y = (y * env.image->sizeline);
 		*((unsigned int *)(env.image->cimg + off_y + off_x)) = color;
 	}
+}
+
+t_image		*create_xpm(void *mlx, char *file_name)
+{
+	t_image		*image;
+	int			width;
+	int			height;
+
+	if (!(image = (t_image *)malloc(sizeof(t_image))))
+		return (NULL);
+	if (!((*image).img =
+		mlx_xpm_file_to_image(mlx, file_name, &width, &height)))
+		return (NULL);
+	(*image).width = width;
+	(*image).height = height;
+	(*image).bpp = 0;
+	(*image).sizeline = 0;
+	(*image).endian = 0;
+	(*image).cimg = mlx_get_data_addr((*image).img, &((*image).bpp),
+					&((*image).sizeline), &((*image).endian));
+	return (image);
 }
