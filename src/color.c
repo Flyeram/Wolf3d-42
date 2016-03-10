@@ -6,7 +6,7 @@
 /*   By: tbalu <tbalu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/14 12:35:34 by tbalu             #+#    #+#             */
-/*   Updated: 2016/03/03 17:11:55 by tbalu            ###   ########.fr       */
+/*   Updated: 2016/03/10 14:17:02 by tbalu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,22 +31,4 @@ t_color			color_percent(double r, double g, double b)
 	new.g = g;
 	new.b = b;
 	return (new);
-}
-
-unsigned int	color_wall(t_env *env, int side)
-{
-	if (side == 0)
-	{
-		if (env->value->step.x == 1)
-			return (create_color(0, 255, 0, 0));
-		else
-			return (create_color(0, 0, 255, 0));
-	}
-	else
-	{
-		if (env->value->step.y == 1)
-			return (create_color(0, 0, 0, 255));
-		else
-			return (create_color(0, 255, 255, 255));
-	}
 }

@@ -6,7 +6,7 @@
 /*   By: tbalu <tbalu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/16 12:57:32 by tbalu             #+#    #+#             */
-/*   Updated: 2016/03/07 15:11:55 by tbalu            ###   ########.fr       */
+/*   Updated: 2016/03/10 17:03:53 by tbalu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ struct			s_value
 struct			s_texture
 {
 	int				weapon_number;
+	int				wall_number;
 	unsigned int	weapon_pos;
 	t_image			*weapon[3];
 	t_image			*wall[4];
@@ -90,7 +91,6 @@ struct			s_env
 
 unsigned int	create_color(int a, int r, int g, int b);
 t_color			color_percent(double r, double g, double b);
-unsigned int	color_wall(t_env *env, int side);
 
 /*
 ** image
@@ -144,5 +144,11 @@ void			draw_vertical(t_env *env, t_vector *limit, int x, int color);
 */
 
 int				loader_texture(t_env *env);
+
+/*
+** texture
+*/
+
+void			calc_texture(t_env *env, t_vector *wall_limit, int side, int x);
 
 #endif
