@@ -6,7 +6,7 @@
 /*   By: tbalu <tbalu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/02 18:51:46 by tbalu             #+#    #+#             */
-/*   Updated: 2016/03/10 17:04:47 by tbalu            ###   ########.fr       */
+/*   Updated: 2016/03/10 19:22:41 by tbalu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,6 +114,7 @@ void			draw_loop(t_env *env)
 	int		side;
 
 	x = 0;
+	clear_image(env->image);
 	while (x < env->win_size.x)
 	{
 		square_x = (int)env->camera->origin.x;

@@ -6,7 +6,7 @@
 /*   By: tbalu <tbalu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/12 11:15:33 by tbalu             #+#    #+#             */
-/*   Updated: 2016/03/07 15:17:24 by tbalu            ###   ########.fr       */
+/*   Updated: 2016/03/10 19:28:18 by tbalu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,27 +74,27 @@ int			press_key_rotate(int key_code, t_env *env)
 
 int			press_key(int key_code, t_env *env)
 {
-	if (key_code == 53)
-		exit(3);
 	if (key_code == 126)
 	{
 		env->texture->weapon_pos++;
-		if (env->map_data->map[(int)(env->camera->origin.x + env->camera->dir.x
-		* env->camera->speed.x)][(int)(env->camera->origin.y)] == 0)
+		if (env->map_data->map[(int)(env->camera->origin.x + 4
+			* env->camera->dir.x
+			* env->camera->speed.x)][(int)(env->camera->origin.y)] == 0)
 			env->camera->origin.x += env->camera->dir.x * env->camera->speed.x;
 		if (env->map_data->map[(int)(env->camera->origin.x)][
-		(int)(env->camera->origin.y + env->camera->dir.y *
+		(int)(env->camera->origin.y + 4 * env->camera->dir.y *
 		env->camera->speed.x)] == 0)
 			env->camera->origin.y += env->camera->dir.y * env->camera->speed.x;
 	}
 	if (key_code == 125)
 	{
 		env->texture->weapon_pos++;
-		if (env->map_data->map[(int)(env->camera->origin.x - env->camera->dir.x
-		* env->camera->speed.x)][(int)env->camera->origin.y] == 0)
+		if (env->map_data->map[(int)(env->camera->origin.x - 4
+			* env->camera->dir.x
+			* env->camera->speed.x)][(int)env->camera->origin.y] == 0)
 			env->camera->origin.x -= env->camera->dir.x * env->camera->speed.x;
 		if (env->map_data->map[(int)(env->camera->origin.x)][
-		(int)(env->camera->origin.y - env->camera->dir.y *
+		(int)(env->camera->origin.y - 4 * env->camera->dir.y *
 		env->camera->speed.x)] == 0)
 			env->camera->origin.y -= env->camera->dir.y * env->camera->speed.x;
 	}
