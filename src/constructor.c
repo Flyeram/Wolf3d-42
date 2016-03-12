@@ -6,7 +6,7 @@
 /*   By: tbalu <tbalu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/23 13:01:05 by tbalu             #+#    #+#             */
-/*   Updated: 2016/03/07 12:20:02 by tbalu            ###   ########.fr       */
+/*   Updated: 2016/03/12 15:38:18 by tbalu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,7 @@ t_env		*constructor_env(int win_x, int win_y, char *file_name)
 
 	if (!(env = (t_env *)malloc(sizeof(t_env))))
 		return (NULL);
+	ft_bzero(env, sizeof(t_env));
 	if (!((*env).mlx = mlx_init()))
 		return (NULL);
 	(*env).win = mlx_new_window((*env).mlx, win_x, win_y, "WOLF3D");

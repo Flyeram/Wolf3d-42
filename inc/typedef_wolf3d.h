@@ -6,7 +6,7 @@
 /*   By: tbalu <tbalu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/22 18:15:00 by tbalu             #+#    #+#             */
-/*   Updated: 2016/03/07 12:13:09 by tbalu            ###   ########.fr       */
+/*   Updated: 2016/03/12 15:25:27 by tbalu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,6 @@ typedef struct s_vector		t_vector;
 typedef	struct s_color		t_color;
 typedef struct s_camera		t_camera;
 typedef struct s_texture	t_texture;
+typedef struct s_event		t_event;
 typedef struct s_map_data	t_map_data;
 #endif

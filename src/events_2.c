@@ -6,7 +6,7 @@
 /*   By: tbalu <tbalu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/07 14:00:10 by tbalu             #+#    #+#             */
-/*   Updated: 2016/03/10 18:45:02 by tbalu            ###   ########.fr       */
+/*   Updated: 2016/03/12 15:23:34 by tbalu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,12 @@ int		change_weapon(int key_code, t_env *env)
 		env->texture->weapon_number = key_code - 18;
 	if (key_code == 53)
 		exit(3);
+	draw_loop(env);
+	return (expose(env));
+}
+
+int		frame_expose(t_env *env)
+{
+	draw_loop(env);
 	return (expose(env));
 }

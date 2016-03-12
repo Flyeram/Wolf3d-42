@@ -6,7 +6,7 @@
 /*   By: tbalu <tbalu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/02 18:51:46 by tbalu             #+#    #+#             */
-/*   Updated: 2016/03/10 19:22:41 by tbalu            ###   ########.fr       */
+/*   Updated: 2016/03/12 14:21:44 by tbalu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,13 +96,13 @@ void			draw_line(t_env *env, int side, int x)
 		wall_limit.x = 0;
 	wall_limit.y = h_line / 2 + env->win_size.y / 2;
 	if (wall_limit.y >= env->win_size.y)
-		wall_limit.y = env->win_size.y - 1;
-	ground_limit.x = 0;
-	ground_limit.y = wall_limit.x - 1;
-	sky_limit.x = wall_limit.y - 1;
-	sky_limit.y = env->win_size.y - 1;
-	draw_vertical(env, &ground_limit, x, create_color(0, 123, 123, 255));
-	draw_vertical(env, &sky_limit, x, create_color(0, 0, 0, 123));
+		wall_limit.y = env->win_size.y;
+	sky_limit.x = 0;
+	sky_limit.y = wall_limit.x - 1;
+	ground_limit.x = wall_limit.y - 1;
+	ground_limit.y = env->win_size.y - 1;
+	draw_vertical(env, &sky_limit, x, create_color(0, 123, 123, 255));
+	draw_vertical(env, &ground_limit, x, create_color(0, 0, 0, 123));
 	calc_texture(env, &wall_limit, side, x);
 }
 
