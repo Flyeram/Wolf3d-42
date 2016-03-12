@@ -6,7 +6,7 @@
 /*   By: tbalu <tbalu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/12 11:15:33 by tbalu             #+#    #+#             */
-/*   Updated: 2016/03/12 18:04:44 by tbalu            ###   ########.fr       */
+/*   Updated: 2016/03/12 18:39:18 by tbalu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int			expose(t_env *env)
 {
 	int		modulo;
 
-	modulo = (env->texture->weapon_pos / 4) % 2;
+	modulo = (env->texture->weapon_pos / (8 - (3 * env->event->shift))) % 2;
 	mlx_put_image_to_window(env->mlx, env->win, env->image->img, 0, 0);
 	mlx_put_image_to_window(env->mlx, env->win,
 		env->texture->weapon[env->texture->weapon_number]->img, 500,
@@ -64,26 +64,32 @@ void		rotate_right(t_env *env)
 
 void		move_forward(t_env *env)
 {
+	double		speed;
+
+	speed = env->camera->speed.x * (env->event->shift + 1);
 	env->texture->weapon_pos++;
 	if (env->map_data->map[(int)(env->camera->origin.x + 2
 		* env->camera->dir.x
-		* env->camera->speed.x)][(int)(env->camera->origin.y)] <= 1)
-		env->camera->origin.x += env->camera->dir.x * env->camera->speed.x;
+		* speed)][(int)(env->camera->origin.y)] <= 1)
+		env->camera->origin.x += env->camera->dir.x * speed;
 	if (env->map_data->map[(int)(env->camera->origin.x)][
 	(int)(env->camera->origin.y + 2 * env->camera->dir.y *
-	env->camera->speed.x)] <= 1)
-		env->camera->origin.y += env->camera->dir.y * env->camera->speed.x;
+	speed)] <= 1)
+		env->camera->origin.y += env->camera->dir.y * speed;
 }
 
 void		move_backward(t_env *env)
 {
+	double		speed;
+
+	speed = env->camera->speed.x * (env->event->shift + 1);
 	env->texture->weapon_pos++;
 	if (env->map_data->map[(int)(env->camera->origin.x - 2
 		* env->camera->dir.x
-		* env->camera->speed.x)][(int)env->camera->origin.y] <= 1)
-		env->camera->origin.x -= env->camera->dir.x * env->camera->speed.x;
+		* speed)][(int)env->camera->origin.y] <= 1)
+		env->camera->origin.x -= env->camera->dir.x * speed;
 	if (env->map_data->map[(int)(env->camera->origin.x)][
 	(int)(env->camera->origin.y - 2 * env->camera->dir.y *
-	env->camera->speed.x)] <= 1)
-		env->camera->origin.y -= env->camera->dir.y * env->camera->speed.x;
+	speed)] <= 1)
+		env->camera->origin.y -= env->camera->dir.y * speed;
 }

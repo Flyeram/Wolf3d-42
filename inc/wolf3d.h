@@ -6,7 +6,7 @@
 /*   By: tbalu <tbalu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/16 12:57:32 by tbalu             #+#    #+#             */
-/*   Updated: 2016/03/12 17:11:16 by tbalu            ###   ########.fr       */
+/*   Updated: 2016/03/12 18:25:20 by tbalu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,10 +78,7 @@ struct			s_event
 	int		key_up;
 	int		key_right;
 	int		key_down;
-	int		key_1;
-	int		key_2;
-	int		key_3;
-	int		key_4;
+	int		shift;
 	int		escape;
 };
 

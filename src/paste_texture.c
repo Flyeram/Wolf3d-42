@@ -6,13 +6,18 @@
 /*   By: tbalu <tbalu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/10 12:53:27 by tbalu             #+#    #+#             */
-/*   Updated: 2016/03/12 18:04:15 by tbalu            ###   ########.fr       */
+/*   Updated: 2016/03/12 18:21:52 by tbalu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <wolf3d.h>
 #include <mlx.h>
 #include <math.h>
+
+/*void			draw_sky_ceiling(t_env *env, t_vector *sky_limit, int x)
+{
+
+}*/
 
 unsigned int	which_texture_wall(t_env *env, int side)
 {
