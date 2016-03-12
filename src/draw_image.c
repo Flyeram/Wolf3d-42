@@ -6,7 +6,7 @@
 /*   By: tbalu <tbalu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/02 18:51:46 by tbalu             #+#    #+#             */
-/*   Updated: 2016/03/12 14:21:44 by tbalu            ###   ########.fr       */
+/*   Updated: 2016/03/12 17:46:54 by tbalu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,13 +89,13 @@ void			draw_line(t_env *env, int side, int x)
 	t_vector	ground_limit;
 	t_vector	sky_limit;
 
-	h_line = (int)(env->win_size.y / env->value->perp_wall_dist);
+	h_line = floor(env->win_size.y / env->value->perp_wall_dist);
 	wall_limit.z = h_line;
 	wall_limit.x = -h_line / 2 + env->win_size.y / 2;
 	if (wall_limit.x < 0)
 		wall_limit.x = 0;
 	wall_limit.y = h_line / 2 + env->win_size.y / 2;
-	if (wall_limit.y >= env->win_size.y)
+	if (wall_limit.y > env->win_size.y)
 		wall_limit.y = env->win_size.y;
 	sky_limit.x = 0;
 	sky_limit.y = wall_limit.x - 1;

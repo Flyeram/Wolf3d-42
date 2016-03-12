@@ -6,7 +6,7 @@
 /*   By: tbalu <tbalu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/10 12:53:27 by tbalu             #+#    #+#             */
-/*   Updated: 2016/03/10 19:28:29 by tbalu            ###   ########.fr       */
+/*   Updated: 2016/03/12 18:04:15 by tbalu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@ void			draw_texture(t_env *env, t_vector *wall_limit, int text_point_x,
 	h_line = wall_limit->z;
 	while (y < wall_limit->y)
 	{
-		text_point_y = y * 256 - env->win_size.y * 128 + h_line * 128;
-		text_point_y = ((text_point_y * texture.height) / h_line) / 256;
+		text_point_y = y * 2 - env->win_size.y + h_line;
+		text_point_y = ((text_point_y * (texture.height / 2)) / h_line);
 		if (text_point_y >= 0 && text_point_y < texture.height &&
 			text_point_x >= 0 && text_point_x < texture.width)
 		{
@@ -62,7 +62,7 @@ void			draw_texture(t_env *env, t_vector *wall_limit, int text_point_x,
 void			calc_texture(t_env *env, t_vector *wall_limit, int side, int x)
 {
 	double		wall_hit;
-	int			text_point_x;
+	double		text_point_x;
 	t_image		texture;
 
 	env->texture->wall_number = which_texture_wall(env, side);

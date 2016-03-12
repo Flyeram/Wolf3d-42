@@ -6,7 +6,7 @@
 /*   By: tbalu <tbalu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/16 12:57:32 by tbalu             #+#    #+#             */
-/*   Updated: 2016/03/12 15:37:50 by tbalu            ###   ########.fr       */
+/*   Updated: 2016/03/12 17:11:16 by tbalu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,11 @@ struct			s_event
 	int		key_up;
 	int		key_right;
 	int		key_down;
+	int		key_1;
+	int		key_2;
+	int		key_3;
+	int		key_4;
+	int		escape;
 };
 
 struct			s_env
@@ -90,7 +95,7 @@ struct			s_env
 	t_map_data		*map_data;
 	t_value			*value;
 	t_texture		*texture;
-	t_event			event;
+	t_event			*event;
 	double			win_ratio;
 };
 
@@ -132,6 +137,11 @@ int				press_key(int key_code, t_env *env);
 int				expose(t_env *env);
 int				change_weapon(int key_code, t_env *env);
 int				frame_expose(t_env *env);
+int				key_release(int key_code, t_env *env);
+void			rotate_left(t_env *env);
+void			rotate_right(t_env *env);
+void			move_forward(t_env *env);
+void			move_backward(t_env *env);
 
 /*
 ** vector

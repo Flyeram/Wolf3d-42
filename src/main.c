@@ -6,7 +6,7 @@
 /*   By: tbalu <tbalu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/08 12:46:20 by tbalu             #+#    #+#             */
-/*   Updated: 2016/03/12 15:38:54 by tbalu            ###   ########.fr       */
+/*   Updated: 2016/03/12 17:39:37 by tbalu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,11 @@
 void		executor(t_env *env)
 {
 	draw_loop(env);
+	mlx_do_key_autorepeatoff(env->mlx);
 	mlx_loop_hook((*env).mlx, frame_expose, env);
 	mlx_expose_hook((*env).win, expose, env);
 	mlx_hook((*env).win, 2, (1L << 0), press_key, env);
+	mlx_hook((*env).win, 3, (1L << 1), key_release, env);
 	mlx_loop((*env).mlx);
 }
 
@@ -40,8 +42,9 @@ int			main(int ac, char **av)
 	env->camera->origin = create_vector(18, 22.5, 0);
 	env->camera->dir = create_vector(-1.0, 0, 0);
 	env->camera->plane = create_vector(0, 0.66, 0);
-	env->camera->speed = create_vector(0.20, 0.05, 0);
-	ft_putnbr(env->event.key_up);
+	env->camera->speed = create_vector(0.10, 0.05, 0);
+	if (!(env->event = (t_event *)malloc(sizeof(t_event))))
+		return (0);
 	loader_texture(env);
 	executor(env);
 	return (0);
