@@ -6,7 +6,7 @@
 /*   By: tbalu <tbalu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/16 12:57:32 by tbalu             #+#    #+#             */
-/*   Updated: 2016/03/14 13:42:24 by tbalu            ###   ########.fr       */
+/*   Updated: 2016/03/14 15:38:08 by tbalu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,8 @@ struct			s_value
 	double		wall_dist;
 	double		wall_y;
 	double		wall_x;
+	int			square_x;
+	int			square_y;
 };
 
 struct			s_texture

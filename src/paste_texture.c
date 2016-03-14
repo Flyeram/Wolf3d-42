@@ -6,53 +6,76 @@
 /*   By: tbalu <tbalu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/10 12:53:27 by tbalu             #+#    #+#             */
-/*   Updated: 2016/03/14 13:54:53 by tbalu            ###   ########.fr       */
+/*   Updated: 2016/03/14 18:00:46 by tbalu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <wolf3d.h>
 #include <mlx.h>
 #include <math.h>
-
+#include <stdio.h>
 void			check_wall_dir(t_env *env, int wall_hit, int side)
 {
 	if (side == 0 && env->camera->ray_dir.x > 0)
 	{
-		env->value->wall_x = (int)env->camera->origin.x;
-		env->value->wall_y = (int)env->camera->origin.y + wall_hit;
+		env->value->wall_x = env->value->square_x;
+		env->value->wall_y = (double)env->value->square_y + wall_hit;
 	}
 	else if (side == 0 && env->camera->ray_dir.x < 0)
 	{
-		env->value->wall_x = (int)env->camera->origin.x;
-		env->value->wall_y = (int)env->camera->origin.y + wall_hit;
+		env->value->wall_x = env->value->square_x + 1.0;
+		env->value->wall_y = (double)env->value->square_y + wall_hit;
 	}
-	else if (side == 0 && env->camera->ray_dir.x > 0)
+	else if (side == 1 && env->camera->ray_dir.y > 0)
 	{
-		env->value->wall_x = (int)env->camera->origin.x;
-		env->value->wall_y = (int)env->camera->origin.y + wall_hit;
+		env->value->wall_x = (double)env->value->square_x + wall_hit;
+		env->value->wall_y = env->value->square_y;
 	}
 	else
 	{
-		env->value->wall_x = (int)env->camera->origin.x;
-		env->value->wall_y = (int)env->camera->origin.y + wall_hit;
+		env->value->wall_x = (double)env->value->square_x + wall_hit;
+		env->value->wall_y = env->value->square_y + 1.0;
 	}
+}
+
+unsigned int	get_color(t_image *texture, int x, int y)
+{
+	unsigned int	color;
+
+	color = 0;
+	if (y >= 0 && y < texture->height &&
+		x >= 0 && x < texture->width)
+	{
+		color = *((unsigned int *)(texture->cimg + ((texture->sizeline *
+			y) + (x * (texture->bpp / 8)))));
+	}
+	return (color);
 }
 
 void			draw_sky_ceiling(t_env *env, t_vector *limit, int x)
 {
-	int		y;
-	int		end;
 	double	weight;
-	double	text_point_x;
-	double	text_point_y;
+	double	floor_point[2];
+	double	current_dist;
+	int		text_point[2];
 
-	end = env->win_size.y - 1;
-	y = limit->y;
-	while (y < end)
+	while (limit->y < env->win_size.y)
 	{
-		weight = env->win_size.y / (2.0 * y - env->win_size.y);
-		weight = weight / env->value->wall_dist;
-		//text_point_y =
+		current_dist = env->win_size.y / (2.0 * limit->y - env->win_size.y);
+		weight = current_dist / env->value->wall_dist;
+		floor_point[0] = weight * env->value->wall_x + (1.0 - weight) *
+			env->camera->origin.x;
+		floor_point[1] = weight * env->value->wall_y + (1.0 - weight) *
+			env->camera->origin.y;
+		text_point[0] = (floor_point[0] * env->texture->wall[0]->width)
+			% (int)env->texture->wall[0]->width;
+		text_point[1] = (floor_point[1] * env->texture->wall[0]->height)
+			% (int)env->texture->wall[0]->height;
+		image_put_pixel(*env, x, limit->y, get_color(env->texture->wall[0],
+			text_point[0], text_point[1]));
+		/*image_put_pixel(*env, x, env->win_size.y - limit->y,
+			get_color(env->texture->tfloor[0], text_point[0], text_point[1]));*/
+		limit->y++;
 	}
 }
 
@@ -90,13 +113,8 @@ void			draw_texture(t_env *env, t_vector *wall_limit, int text_point_x,
 	{
 		text_point_y = y * 2 - env->win_size.y + h_line;
 		text_point_y = ((text_point_y * (texture.height / 2)) / h_line);
-		if (text_point_y >= 0 && text_point_y < texture.height &&
-			text_point_x >= 0 && text_point_x < texture.width)
-		{
-			color = *((unsigned int *)(texture.cimg + ((texture.width * 4 *
-				text_point_y) + (text_point_x * 4))));
-			image_put_pixel(*env, x, y, color);
-		}
+		color = get_color(&texture, text_point_x, text_point_y);
+		image_put_pixel(*env, x, y, color);
 		y++;
 	}
 }
