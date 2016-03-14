@@ -6,7 +6,7 @@
 /*   By: tbalu <tbalu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/23 11:02:21 by tbalu             #+#    #+#             */
-/*   Updated: 2016/03/07 12:19:30 by tbalu            ###   ########.fr       */
+/*   Updated: 2016/03/14 13:24:12 by tbalu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,11 @@ void		image_put_pixel(t_env env, int x, int y, unsigned int color)
 		*((unsigned int *)(env.image->cimg + off_y + off_x)) = color;
 	}
 }
+
+/*
+** function wich take a file_name and return a t_image with the xpm image
+** specified.
+*/
 
 t_image		*create_xpm(void *mlx, char *file_name)
 {

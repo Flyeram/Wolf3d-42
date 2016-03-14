@@ -6,7 +6,7 @@
 /*   By: tbalu <tbalu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/10 12:53:27 by tbalu             #+#    #+#             */
-/*   Updated: 2016/03/12 18:21:52 by tbalu            ###   ########.fr       */
+/*   Updated: 2016/03/14 13:54:53 by tbalu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,47 @@
 #include <mlx.h>
 #include <math.h>
 
-/*void			draw_sky_ceiling(t_env *env, t_vector *sky_limit, int x)
+void			check_wall_dir(t_env *env, int wall_hit, int side)
 {
+	if (side == 0 && env->camera->ray_dir.x > 0)
+	{
+		env->value->wall_x = (int)env->camera->origin.x;
+		env->value->wall_y = (int)env->camera->origin.y + wall_hit;
+	}
+	else if (side == 0 && env->camera->ray_dir.x < 0)
+	{
+		env->value->wall_x = (int)env->camera->origin.x;
+		env->value->wall_y = (int)env->camera->origin.y + wall_hit;
+	}
+	else if (side == 0 && env->camera->ray_dir.x > 0)
+	{
+		env->value->wall_x = (int)env->camera->origin.x;
+		env->value->wall_y = (int)env->camera->origin.y + wall_hit;
+	}
+	else
+	{
+		env->value->wall_x = (int)env->camera->origin.x;
+		env->value->wall_y = (int)env->camera->origin.y + wall_hit;
+	}
+}
 
-}*/
+void			draw_sky_ceiling(t_env *env, t_vector *limit, int x)
+{
+	int		y;
+	int		end;
+	double	weight;
+	double	text_point_x;
+	double	text_point_y;
+
+	end = env->win_size.y - 1;
+	y = limit->y;
+	while (y < end)
+	{
+		weight = env->win_size.y / (2.0 * y - env->win_size.y);
+		weight = weight / env->value->wall_dist;
+		//text_point_y =
+	}
+}
 
 unsigned int	which_texture_wall(t_env *env, int side)
 {
@@ -72,9 +109,9 @@ void			calc_texture(t_env *env, t_vector *wall_limit, int side, int x)
 
 	env->texture->wall_number = which_texture_wall(env, side);
 	texture = *(env->texture->wall[env->texture->wall_number]);
-	wall_hit = (side == 0 ? env->camera->origin.y + env->value->perp_wall_dist
+	wall_hit = (side == 0 ? env->camera->origin.y + env->value->wall_dist
 		* env->camera->ray_dir.y : env->camera->origin.x
-		+ env->value->perp_wall_dist * env->camera->ray_dir.x);
+		+ env->value->wall_dist * env->camera->ray_dir.x);
 	wall_hit -= floor(wall_hit);
 	text_point_x = (int)(wall_hit * (double)(texture.width));
 	if (side == 0 && env->camera->ray_dir.x > 0)
@@ -82,4 +119,6 @@ void			calc_texture(t_env *env, t_vector *wall_limit, int side, int x)
 	if (side == 1 && env->camera->ray_dir.y < 0)
 		text_point_x = texture.width - text_point_x - 1;
 	draw_texture(env, wall_limit, text_point_x, x);
+	check_wall_dir(env, wall_hit, side);
+	draw_sky_ceiling(env, wall_limit, x);
 }

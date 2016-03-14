@@ -6,7 +6,7 @@
 /*   By: tbalu <tbalu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/02 18:51:46 by tbalu             #+#    #+#             */
-/*   Updated: 2016/03/12 17:46:54 by tbalu            ###   ########.fr       */
+/*   Updated: 2016/03/14 13:44:13 by tbalu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,10 +86,8 @@ void			draw_line(t_env *env, int side, int x)
 {
 	int			h_line;
 	t_vector	wall_limit;
-	t_vector	ground_limit;
-	t_vector	sky_limit;
 
-	h_line = floor(env->win_size.y / env->value->perp_wall_dist);
+	h_line = floor(env->win_size.y / env->value->wall_dist);
 	wall_limit.z = h_line;
 	wall_limit.x = -h_line / 2 + env->win_size.y / 2;
 	if (wall_limit.x < 0)
@@ -97,12 +95,6 @@ void			draw_line(t_env *env, int side, int x)
 	wall_limit.y = h_line / 2 + env->win_size.y / 2;
 	if (wall_limit.y > env->win_size.y)
 		wall_limit.y = env->win_size.y;
-	sky_limit.x = 0;
-	sky_limit.y = wall_limit.x - 1;
-	ground_limit.x = wall_limit.y - 1;
-	ground_limit.y = env->win_size.y - 1;
-	draw_vertical(env, &sky_limit, x, create_color(0, 123, 123, 255));
-	draw_vertical(env, &ground_limit, x, create_color(0, 0, 0, 123));
 	calc_texture(env, &wall_limit, side, x);
 }
 
@@ -122,7 +114,7 @@ void			draw_loop(t_env *env)
 		initialize_draw(env, x);
 		calculate_step(env, square_x, square_y);
 		side = dda_check(env, &square_x, &square_y);
-		env->value->perp_wall_dist = (side == 0 ?
+		env->value->wall_dist = (side == 0 ?
 			(square_x - env->camera->origin.x + (1 - env->value->step.x) / 2) /
 			env->camera->ray_dir.x : (square_y - env->camera->origin.y +
 			(1 - env->value->step.y) / 2) / env->camera->ray_dir.y);

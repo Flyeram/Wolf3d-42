@@ -6,7 +6,7 @@
 /*   By: tbalu <tbalu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/16 12:57:32 by tbalu             #+#    #+#             */
-/*   Updated: 2016/03/12 18:25:20 by tbalu            ###   ########.fr       */
+/*   Updated: 2016/03/14 13:42:24 by tbalu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,9 @@ struct			s_value
 	t_vector	side_dist;
 	t_vector	step;
 	t_vector	delta_dist;
-	double		perp_wall_dist;
+	double		wall_dist;
+	double		wall_y;
+	double		wall_x;
 };
 
 struct			s_texture
@@ -70,6 +72,8 @@ struct			s_texture
 	unsigned int	weapon_pos;
 	t_image			*weapon[3];
 	t_image			*wall[4];
+	t_image			*ceiling[1];
+	t_image			*tfloor[1];
 };
 
 struct			s_event
