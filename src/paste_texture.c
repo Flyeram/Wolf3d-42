@@ -14,7 +14,7 @@
 #include <mlx.h>
 #include <math.h>
 #include <stdio.h>
-void			check_wall_dir(t_env *env, int wall_hit, int side)
+void			check_wall_dir(t_env *env, double wall_hit, int side)
 {
 	if (side == 0 && env->camera->ray_dir.x > 0)
 	{
@@ -67,14 +67,14 @@ void			draw_sky_ceiling(t_env *env, t_vector *limit, int x)
 			env->camera->origin.x;
 		floor_point[1] = weight * env->value->wall_y + (1.0 - weight) *
 			env->camera->origin.y;
-		text_point[0] = (floor_point[0] * env->texture->wall[0]->width)
-			% (int)env->texture->wall[0]->width;
-		text_point[1] = (floor_point[1] * env->texture->wall[0]->height)
-			% (int)env->texture->wall[0]->height;
-		image_put_pixel(*env, x, limit->y, get_color(env->texture->wall[0],
+		text_point[0] = (int)(floor_point[0] * env->texture->ceiling[0]->width)
+			% env->texture->ceiling[0]->width;
+		text_point[1] = (int)(floor_point[1] * env->texture->ceiling[0]->height)
+			% env->texture->ceiling[0]->height;
+		image_put_pixel(*env, x, limit->y, get_color(env->texture->tfloor[0],
 			text_point[0], text_point[1]));
-		/*image_put_pixel(*env, x, env->win_size.y - limit->y,
-			get_color(env->texture->tfloor[0], text_point[0], text_point[1]));*/
+		image_put_pixel(*env, x, env->win_size.y - limit->y,
+			get_color(env->texture->ceiling[0], text_point[0], text_point[1]));
 		limit->y++;
 	}
 }
