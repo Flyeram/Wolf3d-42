@@ -6,7 +6,7 @@
 /*   By: tbalu <tbalu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/16 12:57:32 by tbalu             #+#    #+#             */
-/*   Updated: 2016/03/16 12:08:20 by tbalu            ###   ########.fr       */
+/*   Updated: 2016/03/16 15:53:42 by tbalu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ struct			s_camera
 struct			s_map_data
 {
 	int		**map;
+	int		**hide_map;
 	int		sizex_ar;
 	int		sizey_ar;
 };

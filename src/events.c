@@ -6,7 +6,7 @@
 /*   By: tbalu <tbalu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/12 11:15:33 by tbalu             #+#    #+#             */
-/*   Updated: 2016/03/16 12:33:31 by tbalu            ###   ########.fr       */
+/*   Updated: 2016/03/16 16:04:34 by tbalu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,34 +32,38 @@ void		rotate_left(t_env *env)
 {
 	double	old_dir;
 	double	old_plane;
+	double	speed;
 
+	speed = env->camera->speed.y * (env->event->shift + 0.95);
 	old_dir = env->camera->dir.x;
-	env->camera->dir.x = old_dir * cos(env->camera->speed.y) -
-		env->camera->dir.y * sin(env->camera->speed.y);
-	env->camera->dir.y = old_dir * sin(env->camera->speed.y) +
-		env->camera->dir.y * cos(env->camera->speed.y);
+	env->camera->dir.x = old_dir * cos(speed) -
+		env->camera->dir.y * sin(speed);
+	env->camera->dir.y = old_dir * sin(speed) +
+		env->camera->dir.y * cos(speed);
 	old_plane = env->camera->plane.x;
-	env->camera->plane.x = old_plane * cos(env->camera->speed.y) -
-		env->camera->plane.y * sin(env->camera->speed.y);
-	env->camera->plane.y = old_plane * sin(env->camera->speed.y) +
-		env->camera->plane.y * cos(env->camera->speed.y);
+	env->camera->plane.x = old_plane * cos(speed) -
+		env->camera->plane.y * sin(speed);
+	env->camera->plane.y = old_plane * sin(speed) +
+		env->camera->plane.y * cos(speed);
 }
 
 void		rotate_right(t_env *env)
 {
 	double	old_dir;
 	double	old_plane;
+	double	speed;
 
+	speed = env->camera->speed.y * (env->event->shift + 0.95);
 	old_dir = env->camera->dir.x;
-	env->camera->dir.x = old_dir * cos(-env->camera->speed.y) -
-		env->camera->dir.y * sin(-env->camera->speed.y);
-	env->camera->dir.y = old_dir * sin(-env->camera->speed.y) +
-		env->camera->dir.y * cos(-env->camera->speed.y);
+	env->camera->dir.x = old_dir * cos(-speed) -
+		env->camera->dir.y * sin(-speed);
+	env->camera->dir.y = old_dir * sin(-speed) +
+		env->camera->dir.y * cos(-speed);
 	old_plane = env->camera->plane.x;
-	env->camera->plane.x = old_plane * cos(-env->camera->speed.y) -
-		env->camera->plane.y * sin(-env->camera->speed.y);
-	env->camera->plane.y = old_plane * sin(-env->camera->speed.y) +
-		env->camera->plane.y * cos(-env->camera->speed.y);
+	env->camera->plane.x = old_plane * cos(-speed) -
+		env->camera->plane.y * sin(-speed);
+	env->camera->plane.y = old_plane * sin(-speed) +
+		env->camera->plane.y * cos(-speed);
 }
 
 void		move_forward(t_env *env)
