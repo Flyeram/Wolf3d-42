@@ -6,7 +6,7 @@
 /*   By: tbalu <tbalu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/16 12:57:32 by tbalu             #+#    #+#             */
-/*   Updated: 2016/03/14 15:38:08 by tbalu            ###   ########.fr       */
+/*   Updated: 2016/03/16 12:08:20 by tbalu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -173,5 +173,11 @@ int				loader_texture(t_env *env);
 */
 
 void			calc_texture(t_env *env, t_vector *wall_limit, int side, int x);
+
+/*
+** draw_map
+*/
+
+void			draw_map(t_env *env);
 
 #endif
