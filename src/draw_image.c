@@ -6,7 +6,7 @@
 /*   By: tbalu <tbalu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/02 18:51:46 by tbalu             #+#    #+#             */
-/*   Updated: 2016/03/16 12:33:27 by tbalu            ###   ########.fr       */
+/*   Updated: 2016/03/16 14:04:46 by tbalu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <stdlib.h>
 #include <libft.h>
 #include <math.h>
-#include <stdio.h>
+
 void			initialize_draw(t_env *env, int x)
 {
 	double		camera_x;

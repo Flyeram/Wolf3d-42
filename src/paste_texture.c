@@ -6,7 +6,7 @@
 /*   By: tbalu <tbalu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/10 12:53:27 by tbalu             #+#    #+#             */
-/*   Updated: 2016/03/14 18:00:46 by tbalu            ###   ########.fr       */
+/*   Updated: 2016/03/16 14:07:03 by tbalu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,8 @@ void			draw_sky_ceiling(t_env *env, t_vector *limit, int x)
 			% env->texture->ceiling[0]->width;
 		text_point[1] = (int)(floor_point[1] * env->texture->ceiling[0]->height)
 			% env->texture->ceiling[0]->height;
-		image_put_pixel(*env, x, limit->y, get_color(env->texture->tfloor[0],
-			text_point[0], text_point[1]));
+		image_put_pixel(*env, x, limit->y, (get_color(env->texture->tfloor[0],
+			text_point[0], text_point[1]) >> 1) & 8355711);
 		image_put_pixel(*env, x, env->win_size.y - limit->y,
 			get_color(env->texture->ceiling[0], text_point[0], text_point[1]));
 		limit->y++;

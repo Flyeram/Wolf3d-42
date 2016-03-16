@@ -6,7 +6,7 @@
 /*   By: tbalu <tbalu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/16 11:57:09 by tbalu             #+#    #+#             */
-/*   Updated: 2016/03/16 12:46:41 by tbalu            ###   ########.fr       */
+/*   Updated: 2016/03/16 14:03:33 by tbalu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	draw_map(t_env *env)
 		while (y < env->map_data->sizey_ar)
 		{
 			printf("%d, %d\n", x, y);
-			if ((env->map_data->map)[x][y] > 0)
+			if ((env->map_data->map)[y][x] > 0)
 			{
 				pos.x = 10 + 5 * x;
 				pos.y = 10 + 5 * y;
@@ -65,4 +65,7 @@ void	draw_map(t_env *env)
 		}
 		x++;
 	}
+	pos.x = env->camera->origin.x * 5 + 10;
+	pos.y = env->camera->origin.y * 5 + 10;
+	draw_rectangle(env, &pos, &dimension, 0xFFFF00);
 }

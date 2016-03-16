@@ -6,7 +6,7 @@
 /*   By: tbalu <tbalu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/23 13:01:05 by tbalu             #+#    #+#             */
-/*   Updated: 2016/03/12 15:38:18 by tbalu            ###   ########.fr       */
+/*   Updated: 2016/03/16 13:58:55 by tbalu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int			constructor_get_data(t_list **list, char **array, t_env *env)
 	(env->map_data->sizex_ar == 0 || env->map_data->sizex_ar == len) ? len : 0;
 	if (env->map_data->sizex_ar == 0)
 		return (0);
-	if (!(tab_coords = (int *)malloc(sizeof(int) * len + 1)))
+	if (!(tab_coords = (int *)malloc(sizeof(int) * len)))
 		return (0);
 	tab_coords[len] = 0;
 	while (array[x])
@@ -37,7 +37,7 @@ int			constructor_get_data(t_list **list, char **array, t_env *env)
 		tab_coords[x] = ft_atoi(array[x]);
 		x++;
 	}
-	new_elem = ft_lstnew(tab_coords, sizeof(int) * len + 1);
+	new_elem = ft_lstnew(tab_coords, sizeof(int) * len);
 	ft_lsteadd(list, new_elem);
 	return (1);
 }
@@ -49,9 +49,8 @@ int			**constructor_conv_list(t_list **list, int y)
 	t_list		*next_elem;
 
 	i = 0;
-	if (!(array = (int **)malloc(y * sizeof(int *) + 1)))
+	if (!(array = (int **)malloc(y * sizeof(int *))))
 		return (NULL);
-	array[y] = NULL;
 	next_elem = (*list)->next;
 	while (next_elem)
 	{
