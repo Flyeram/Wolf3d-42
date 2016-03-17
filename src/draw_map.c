@@ -6,7 +6,7 @@
 /*   By: tbalu <tbalu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/16 11:57:09 by tbalu             #+#    #+#             */
-/*   Updated: 2016/03/17 16:28:29 by tbalu            ###   ########.fr       */
+/*   Updated: 2016/03/17 17:34:26 by tbalu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,13 +69,13 @@ void	reveal_pos(t_env *env)
 
 	pos_x = (int)env->camera->origin.x + 1;
 	pos_y = (int)env->camera->origin.y + 1;
-	x = pos_x - 2;
-	while (x < pos_x)
+	x = pos_y - 2;
+	while (x <= pos_y)
 	{
-		y = pos_y - 2;
-		while (y < pos_y)
+		y = pos_x - 2;
+		while (y <= pos_x)
 		{
-			env->map_data->hide_map[y - 1][x - 1] = env->map_data->map[y - 1][x - 1];
+			env->map_data->hide_map[y][x] = env->map_data->map[y][x];
 			y++;
 		}
 		x++;
@@ -98,7 +98,7 @@ void	draw_pos_player(t_env *env)
 
 void	draw_map(t_env *env)
 {
-	//reveal_pos(env);
+	reveal_pos(env);
 	draw_map_wall(env);
 	draw_pos_player(env);
 }

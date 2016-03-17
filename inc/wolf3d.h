@@ -6,7 +6,7 @@
 /*   By: tbalu <tbalu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/16 12:57:32 by tbalu             #+#    #+#             */
-/*   Updated: 2016/03/16 15:53:42 by tbalu            ###   ########.fr       */
+/*   Updated: 2016/03/17 17:47:23 by tbalu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ struct			s_texture
 {
 	int				weapon_number;
 	int				wall_number;
+	int				wall_time;
 	unsigned int	weapon_pos;
 	t_image			*weapon[3];
 	t_image			*wall[4];

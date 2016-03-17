@@ -6,7 +6,7 @@
 /*   By: tbalu <tbalu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/12 11:15:33 by tbalu             #+#    #+#             */
-/*   Updated: 2016/03/16 16:04:34 by tbalu            ###   ########.fr       */
+/*   Updated: 2016/03/17 17:48:16 by tbalu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ int			expose(t_env *env)
 	int		modulo;
 
 	modulo = (env->texture->weapon_pos / (8 - (3 * env->event->shift))) % 2;
+	env->texture->wall_time += 1;
 	mlx_put_image_to_window(env->mlx, env->win, env->image->img, 0, 0);
 	mlx_put_image_to_window(env->mlx, env->win,
 		env->texture->weapon[env->texture->weapon_number]->img, 500,

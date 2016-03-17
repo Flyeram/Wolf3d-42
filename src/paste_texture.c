@@ -6,14 +6,15 @@
 /*   By: tbalu <tbalu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/10 12:53:27 by tbalu             #+#    #+#             */
-/*   Updated: 2016/03/16 14:07:03 by tbalu            ###   ########.fr       */
+/*   Updated: 2016/03/17 17:56:05 by tbalu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <wolf3d.h>
 #include <mlx.h>
 #include <math.h>
-#include <stdio.h>
+#include <stdlib.h>
+
 void			check_wall_dir(t_env *env, double wall_hit, int side)
 {
 	if (side == 0 && env->camera->ray_dir.x > 0)
@@ -93,7 +94,7 @@ unsigned int	which_texture_wall(t_env *env, int side)
 		if (env->value->step.y == 1)
 			return (2);
 		else
-			return (3);
+			return ((abs(-env->texture->wall_time) / (16 / (env->event->shift + 1))) % 4);
 	}
 }
 
