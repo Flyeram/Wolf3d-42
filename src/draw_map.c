@@ -6,7 +6,7 @@
 /*   By: tbalu <tbalu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/16 11:57:09 by tbalu             #+#    #+#             */
-/*   Updated: 2016/03/17 13:48:30 by tbalu            ###   ########.fr       */
+/*   Updated: 2016/03/17 16:28:29 by tbalu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	draw_map_wall(t_env *env)
 		{
 			pos.x = 10 + 5 * x;
 			pos.y = 10 + 5 * y;
-			if ((env->map_data->hide_map)[y][x] > 1)
+			if ((env->map_data->hide_map)[y][x] > 0)
 				draw_rectangle(env, &pos, &dimension, 0xFF0000);
 			y++;
 		}
@@ -75,7 +75,7 @@ void	reveal_pos(t_env *env)
 		y = pos_y - 2;
 		while (y < pos_y)
 		{
-			env->map_data->hide_map[y][x] = env->map_data->map[y][x] + 1;
+			env->map_data->hide_map[y - 1][x - 1] = env->map_data->map[y - 1][x - 1];
 			y++;
 		}
 		x++;

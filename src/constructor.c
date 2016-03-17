@@ -6,7 +6,7 @@
 /*   By: tbalu <tbalu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/23 13:01:05 by tbalu             #+#    #+#             */
-/*   Updated: 2016/03/17 13:47:47 by tbalu            ###   ########.fr       */
+/*   Updated: 2016/03/17 16:11:49 by tbalu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,6 @@ int			constructor_map(t_env *env, char *fname)
 	if (!(env->map_data->hide_map = ft_create_iarray(env->map_data->sizey_ar,
 		env->map_data->sizex_ar)))
 		return (0);
-	//ft_bzero(env->map_data->hide_map, sizeof(env->map_data->hide_map));
 	return (1);
 }
 
