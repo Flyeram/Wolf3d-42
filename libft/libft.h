@@ -6,7 +6,7 @@
 /*   By: tbalu <tbalu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/29 11:09:01 by tbalu             #+#    #+#             */
-/*   Updated: 2016/02/08 15:07:02 by tbalu            ###   ########.fr       */
+/*   Updated: 2016/03/17 12:28:02 by tbalu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -166,4 +166,7 @@ void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 
 void				ft_lsteadd(t_list **alst, t_list *new);
+
+int					**ft_create_iarray(int y, int x);
+
 #endif
