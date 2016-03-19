@@ -6,7 +6,7 @@
 /*   By: tbalu <tbalu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/10 12:53:27 by tbalu             #+#    #+#             */
-/*   Updated: 2016/03/17 17:56:05 by tbalu            ###   ########.fr       */
+/*   Updated: 2016/03/19 11:39:39 by tbalu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,20 +39,6 @@ void			check_wall_dir(t_env *env, double wall_hit, int side)
 	}
 }
 
-unsigned int	get_color(t_image *texture, int x, int y)
-{
-	unsigned int	color;
-
-	color = 0;
-	if (y >= 0 && y < texture->height &&
-		x >= 0 && x < texture->width)
-	{
-		color = *((unsigned int *)(texture->cimg + ((texture->sizeline *
-			y) + (x * (texture->bpp / 8)))));
-	}
-	return (color);
-}
-
 void			draw_sky_ceiling(t_env *env, t_vector *limit, int x)
 {
 	double	weight;
@@ -72,9 +58,9 @@ void			draw_sky_ceiling(t_env *env, t_vector *limit, int x)
 			% env->texture->ceiling[0]->width;
 		text_point[1] = (int)(floor_point[1] * env->texture->ceiling[0]->height)
 			% env->texture->ceiling[0]->height;
-		image_put_pixel(*env, x, limit->y, (get_color(env->texture->tfloor[0],
+		image_put_pixel(env, x, limit->y, (get_color(env->texture->tfloor[0],
 			text_point[0], text_point[1]) >> 1) & 8355711);
-		image_put_pixel(*env, x, env->win_size.y - limit->y,
+		image_put_pixel(env, x, env->win_size.y - limit->y,
 			get_color(env->texture->ceiling[0], text_point[0], text_point[1]));
 		limit->y++;
 	}
@@ -94,7 +80,7 @@ unsigned int	which_texture_wall(t_env *env, int side)
 		if (env->value->step.y == 1)
 			return (2);
 		else
-			return ((abs(-env->texture->wall_time) / (16 / (env->event->shift + 1))) % 4);
+			return ((abs(-env->texture->wall_time) / 16) % 4);
 	}
 }
 
@@ -115,7 +101,7 @@ void			draw_texture(t_env *env, t_vector *wall_limit, int text_point_x,
 		text_point_y = y * 2 - env->win_size.y + h_line;
 		text_point_y = ((text_point_y * (texture.height / 2)) / h_line);
 		color = get_color(&texture, text_point_x, text_point_y);
-		image_put_pixel(*env, x, y, color);
+		image_put_pixel(env, x, y, color);
 		y++;
 	}
 }

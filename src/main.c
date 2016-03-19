@@ -6,7 +6,7 @@
 /*   By: tbalu <tbalu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/08 12:46:20 by tbalu             #+#    #+#             */
-/*   Updated: 2016/03/17 16:23:10 by tbalu            ###   ########.fr       */
+/*   Updated: 2016/03/19 12:31:58 by tbalu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int			main(int ac, char **av)
 		return (0);
 	env->camera->origin = create_vector(18, 22.5, 0);
 	env->camera->dir = create_vector(-1.0, 0, 0);
-	env->camera->plane = create_vector(0, 0.66, 0);
+	env->camera->plane = create_vector(0.0, 0.66, 0);
 	env->camera->speed = create_vector(0.05, 0.040, 0);
 	if (!(env->event = (t_event *)malloc(sizeof(t_event))))
 		return (0);

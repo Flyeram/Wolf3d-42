@@ -6,7 +6,7 @@
 /*   By: tbalu <tbalu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/23 11:02:21 by tbalu             #+#    #+#             */
-/*   Updated: 2016/03/14 13:24:12 by tbalu            ###   ########.fr       */
+/*   Updated: 2016/03/19 11:39:03 by tbalu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,16 +54,16 @@ t_image		*create_image(void *mlx, int width, int height)
 **function which put a color at the pos (x,y) on the image in the env struct
 */
 
-void		image_put_pixel(t_env env, int x, int y, unsigned int color)
+void		image_put_pixel(t_env *env, int x, int y, unsigned int color)
 {
 	int		off_x;
 	int		off_y;
 
-	if (x >= 0 && x < env.win_size.x && y >= 0 && y < env.win_size.y)
+	if (x >= 0 && x < env->win_size.x && y >= 0 && y < env->win_size.y)
 	{
-		off_x = x * (env.image->bpp / 8);
-		off_y = (y * env.image->sizeline);
-		*((unsigned int *)(env.image->cimg + off_y + off_x)) = color;
+		off_x = x * (env->image->bpp / 8);
+		off_y = (y * env->image->sizeline);
+		*((unsigned int *)(env->image->cimg + off_y + off_x)) = color;
 	}
 }
 

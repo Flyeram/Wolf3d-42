@@ -6,7 +6,7 @@
 /*   By: tbalu <tbalu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/12 11:15:33 by tbalu             #+#    #+#             */
-/*   Updated: 2016/03/17 17:48:16 by tbalu            ###   ########.fr       */
+/*   Updated: 2016/03/19 13:03:25 by tbalu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,7 @@ void		move_forward(t_env *env)
 	(int)(env->camera->origin.y + 2 * env->camera->dir.y *
 	speed)] <= 1)
 		env->camera->origin.y += env->camera->dir.y * speed;
+	case_event(env);
 }
 
 void		move_backward(t_env *env)

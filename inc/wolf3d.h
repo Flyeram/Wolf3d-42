@@ -6,7 +6,7 @@
 /*   By: tbalu <tbalu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/16 12:57:32 by tbalu             #+#    #+#             */
-/*   Updated: 2016/03/17 17:47:23 by tbalu            ###   ########.fr       */
+/*   Updated: 2016/03/19 13:02:36 by tbalu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,13 +110,14 @@ struct			s_env
 
 unsigned int	create_color(int a, int r, int g, int b);
 t_color			color_percent(double r, double g, double b);
+unsigned int	get_color(t_image *texture, int x, int y);
 
 /*
 ** image
 */
 
 t_image			*create_image(void *mlx, int width, int height);
-void			image_put_pixel(t_env env, int x, int y,
+void			image_put_pixel(t_env *env, int x, int y,
 				unsigned int color);
 void			clear_image(t_image *image);
 t_image			*create_xpm(void *mlx, char *file_name);
@@ -147,6 +148,7 @@ void			rotate_left(t_env *env);
 void			rotate_right(t_env *env);
 void			move_forward(t_env *env);
 void			move_backward(t_env *env);
+void			case_event(t_env *env);
 
 /*
 ** vector
@@ -157,6 +159,7 @@ double			dot_product(t_vector *a, t_vector *b);
 t_vector		substract_vector(t_vector *a, t_vector *b);
 t_vector		add_vector(t_vector *a, t_vector *b);
 t_vector		vector_scale(t_vector *a, double k);
+void			normalize(t_vector *vector);
 
 /*
 ** draw_verti

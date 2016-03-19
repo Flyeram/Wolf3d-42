@@ -6,7 +6,7 @@
 /*   By: tbalu <tbalu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/07 14:00:10 by tbalu             #+#    #+#             */
-/*   Updated: 2016/03/12 17:21:23 by tbalu            ###   ########.fr       */
+/*   Updated: 2016/03/19 13:03:17 by tbalu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,4 +43,14 @@ int		frame_expose(t_env *env)
 		exit(3);
 	draw_loop(env);
 	return (expose(env));
+}
+
+void	case_event(t_env *env)
+{
+	if ((int)env->camera->origin.x == 17 && (int)env->camera->origin.y == 21)
+	{
+		env->camera->origin = create_vector(18, 22.5, 0);
+		env->camera->dir = create_vector(-1.0, 0, 0);
+		env->camera->plane = create_vector(0.0, 0.66, 0);
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: tbalu <tbalu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/14 12:35:34 by tbalu             #+#    #+#             */
-/*   Updated: 2016/03/10 14:17:02 by tbalu            ###   ########.fr       */
+/*   Updated: 2016/03/19 11:31:37 by tbalu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,4 +31,22 @@ t_color			color_percent(double r, double g, double b)
 	new.g = g;
 	new.b = b;
 	return (new);
+}
+
+/*
+** give the color of the pixel (x, y) of the texture given.
+*/
+
+unsigned int	get_color(t_image *texture, int x, int y)
+{
+	unsigned int	color;
+
+	color = 0;
+	if (y >= 0 && y < texture->height &&
+		x >= 0 && x < texture->width)
+	{
+		color = *((unsigned int *)(texture->cimg + ((texture->sizeline *
+			y) + (x * (texture->bpp / 8)))));
+	}
+	return (color);
 }

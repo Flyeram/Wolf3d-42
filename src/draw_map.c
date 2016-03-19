@@ -6,7 +6,7 @@
 /*   By: tbalu <tbalu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/16 11:57:09 by tbalu             #+#    #+#             */
-/*   Updated: 2016/03/17 17:34:26 by tbalu            ###   ########.fr       */
+/*   Updated: 2016/03/19 11:39:47 by tbalu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	draw_rectangle(t_env *env, t_vector *pos, t_vector *dimension,
 		y = 0;
 		while (y < dimension->y)
 		{
-			image_put_pixel(*env, x + pos->x, y + pos->y, color);
+			image_put_pixel(env, x + pos->x, y + pos->y, color);
 			y++;
 		}
 		x++;
