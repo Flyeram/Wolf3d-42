@@ -6,7 +6,7 @@
 /*   By: tbalu <tbalu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/29 11:09:01 by tbalu             #+#    #+#             */
-/*   Updated: 2016/03/19 15:08:41 by tbalu            ###   ########.fr       */
+/*   Updated: 2016/03/19 15:56:36 by tbalu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,11 +140,15 @@ int					ft_hextodec(char *nb_hex);
 
 int					ft_arraylen(char **array);
 
-void				ft_free_array(void ***array, int size);
+void				ft__array(void ***array, int size);
 
 int					ft_isblank(char s);
 
 double				ft_stof(char *str);
+
+void				ft_free_iarray(void ***array, int size);
+
+void				*ft_free_array(char **array);
 
 typedef	struct		s_list
 {

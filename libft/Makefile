@@ -6,7 +6,7 @@
 #    By: tbalu <tbalu@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/24 10:04:50 by tbalu             #+#    #+#              #
-#    Updated: 2016/03/17 16:20:02 by tbalu            ###   ########.fr        #
+#    Updated: 2016/03/19 15:54:13 by tbalu            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ ft_putnbr.c ft_putnbr_fd.c ft_strsub.c ft_strjoin.c ft_strmapi.c ft_strtrim.c \
 ft_strsplit.c ft_lstnew.c ft_lstdelone.c ft_lstdel.c ft_lstadd.c ft_lstiter.c \
 ft_lsteadd.c ft_lstmap.c get_next_line.c get_next_line_utils.c ft_min.c \
 ft_max.c ft_hextodec.c ft_arraylen.c ft_free_array.c ft_isblank.c ft_stof.c \
-ft_create_iarray.c ft_set_iarray.c
+ft_create_iarray.c ft_set_iarray.c ft_free_iarray.c
 OBJ = $(SRC:.c=.o)
 
 all: $(NAME)

@@ -6,7 +6,7 @@
 /*   By: tbalu <tbalu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/07 14:00:10 by tbalu             #+#    #+#             */
-/*   Updated: 2016/03/19 15:34:45 by tbalu            ###   ########.fr       */
+/*   Updated: 2016/03/19 15:57:36 by tbalu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,11 +49,11 @@ void	case_event(t_env *env)
 {
 	if ((int)env->camera->origin.x == 17 && (int)env->camera->origin.y == 21)
 	{
-		env->camera->origin = create_vector(2, 1.5, 0);
+		env->camera->origin = create_vector(1, 1.5, 0);
 		env->camera->dir = create_vector(1.0, 0, 0);
 		env->camera->plane = create_vector(0.0, -0.66, 0);
-		ft_free_array((void ***)&env->map_data->map, env->map_data->sizey_ar);
-		ft_free_array((void ***)&env->map_data->hide_map,
+		ft_free_iarray((void ***)&env->map_data->map, env->map_data->sizey_ar);
+		ft_free_iarray((void ***)&env->map_data->hide_map,
 			env->map_data->sizey_ar);
 		ft_bzero(env->event, sizeof(t_event));
 		constructor_map(env, "maps/map_2.map");
