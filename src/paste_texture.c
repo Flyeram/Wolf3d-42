@@ -6,7 +6,7 @@
 /*   By: tbalu <tbalu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/10 12:53:27 by tbalu             #+#    #+#             */
-/*   Updated: 2016/03/19 11:39:39 by tbalu            ###   ########.fr       */
+/*   Updated: 2016/03/19 16:58:20 by tbalu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ unsigned int	which_texture_wall(t_env *env, int side)
 		if (env->value->step.y == 1)
 			return (2);
 		else
-			return ((abs(-env->texture->wall_time) / 16) % 4);
+			return (((abs(-env->texture->wall_time) / 16) % 2) + 10);
 	}
 }
 
