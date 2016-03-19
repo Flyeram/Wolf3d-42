@@ -6,7 +6,7 @@
 /*   By: tbalu <tbalu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/23 13:01:05 by tbalu             #+#    #+#             */
-/*   Updated: 2016/03/19 11:39:55 by tbalu            ###   ########.fr       */
+/*   Updated: 2016/03/19 14:48:25 by tbalu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include <mlx.h>
 #include <stdlib.h>
 #include <fcntl.h>
+#include <unistd.h>
 
 int			constructor_get_data(t_list **list, char **array, t_env *env)
 {
@@ -54,19 +55,19 @@ int			**constructor_conv_list(t_list **list, int y)
 	next_elem = (*list)->next;
 	while (next_elem)
 	{
-		array[i] = (*(*list)).content;
+		array[i] = (*list)->content;
 		free(*list);
 		*list = next_elem;
 		next_elem = (*list)->next;
 		i++;
 	}
-	array[i] = (*(*list)).content;
+	array[i] = (*list)->content;
 	*list = next_elem;
 	free(*list);
 	return (array);
 }
 
-int			constructor_map(t_env *env, char *fname)
+int			constructor_loop(t_env *env, char *fname)
 {
 	int		fd[2];
 	char	*line;
@@ -88,9 +89,21 @@ int			constructor_map(t_env *env, char *fname)
 	if (!(env->map_data->map =
 	constructor_conv_list(&list, env->map_data->sizey_ar)))
 		return (0);
+	close(fd[0]);
+	return (1);
+}
+
+int			constructor_map(t_env *env, char *fname)
+{
+	env->map_data->sizey_ar = 0;
+	env->map_data->sizex_ar = 0;
+	if (constructor_loop(env, fname) == 0)
+		return (0);
 	if (!(env->map_data->hide_map = ft_create_iarray(env->map_data->sizey_ar,
 		env->map_data->sizex_ar)))
 		return (0);
+	ft_set_iarray(env->map_data->hide_map, env->map_data->sizex_ar,
+		env->map_data->sizey_ar, -1);
 	return (1);
 }
 

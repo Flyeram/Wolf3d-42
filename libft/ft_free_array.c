@@ -6,22 +6,23 @@
 /*   By: tbalu <tbalu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/03 14:25:24 by tbalu             #+#    #+#             */
-/*   Updated: 2016/02/03 14:31:35 by tbalu            ###   ########.fr       */
+/*   Updated: 2016/03/19 15:11:27 by tbalu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdlib.h>
 
-void	*ft_free_array(char **array)
+void	ft_free_array(void ***array, int size)
 {
 	int		i;
 
 	i = 0;
-	while (array[i])
+	while (i < size)
 	{
-		ft_strdel(&array[i]);
+		free((*array)[i]);
 		i++;
 	}
-	ft_strdel(array);
-	return (NULL);
+	free(*array);
+	*array = NULL;
 }

@@ -6,7 +6,7 @@
 /*   By: tbalu <tbalu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/16 12:57:32 by tbalu             #+#    #+#             */
-/*   Updated: 2016/03/19 13:02:36 by tbalu            ###   ########.fr       */
+/*   Updated: 2016/03/19 14:06:07 by tbalu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,8 +126,8 @@ t_image			*create_xpm(void *mlx, char *file_name);
 ** constructor
 */
 
-int				constructor(t_env *env, char *fname);
 t_env			*constructor_env(int win_x, int win_y, char *file_name);
+int				constructor_map(t_env *env, char *fname);
 
 /*
 ** draw_image

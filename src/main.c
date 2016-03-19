@@ -6,7 +6,7 @@
 /*   By: tbalu <tbalu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/08 12:46:20 by tbalu             #+#    #+#             */
-/*   Updated: 2016/03/19 12:31:58 by tbalu            ###   ########.fr       */
+/*   Updated: 2016/03/19 15:33:00 by tbalu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,6 @@ int			main(int ac, char **av)
 	if (!(env->event = (t_event *)malloc(sizeof(t_event))))
 		return (0);
 	ft_bzero(env->event, sizeof(t_event));
-	ft_set_iarray(env->map_data->hide_map, env->map_data->sizex_ar,
-		env->map_data->sizey_ar, -1);
 	loader_texture(env);
 	executor(env);
 	return (0);
