@@ -6,7 +6,7 @@
 /*   By: tbalu <tbalu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/07 14:54:12 by tbalu             #+#    #+#             */
-/*   Updated: 2016/03/23 12:10:51 by tbalu            ###   ########.fr       */
+/*   Updated: 2016/03/23 15:03:09 by tbalu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,8 @@ int		loader_texture(t_env *env)
 		"texture/wall/cocatrice.xpm");
 	env->texture->wall[3] = create_xpm(env->mlx,
 		"texture/wall/painting.xpm");
+	env->texture->wall[4] = create_xpm(env->mlx,
+		"texture/wall/flagend.xpm");
 	env->texture->ceiling[0] = create_xpm(env->mlx,
 		"texture/ceiling/castleceiling.xpm");
 	env->texture->tfloor[0] = create_xpm(env->mlx,

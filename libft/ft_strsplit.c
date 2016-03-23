@@ -6,12 +6,13 @@
 /*   By: tbalu <tbalu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/27 13:22:02 by tbalu             #+#    #+#             */
-/*   Updated: 2016/02/03 14:26:10 by tbalu            ###   ########.fr       */
+/*   Updated: 2016/03/23 16:21:08 by tbalu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <string.h>
+#include <stdlib.h>
 
 static	char	*ft_trim(char const *s, char c)
 {

@@ -6,7 +6,7 @@
 /*   By: tbalu <tbalu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/14 16:47:03 by tbalu             #+#    #+#             */
-/*   Updated: 2016/01/12 13:35:02 by tbalu            ###   ########.fr       */
+/*   Updated: 2016/03/23 16:45:32 by tbalu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int		gnl_addlist(t_buffer **list_buff, int fd, char *buff)
 	{
 		if (tmp->fd == fd)
 		{
-			tmp->buff = buff;
+			tmp->buff = ft_strdup(buff);
 			free(new_elem);
 			return (1);
 		}
@@ -89,7 +89,7 @@ int		gnl_buff(char **line, int fd, t_buffer *list)
 			while ((*list).buff[++len])
 			{
 				if (list->buff[len] == '\n')
-					return (!(list->buff = &(list->buff[len + 1])));
+					return (!(list->buff = &list->buff[len + 1]));
 				(*line)[len] = list->buff[len];
 			}
 			(*list).buff = NULL;
@@ -104,6 +104,7 @@ int		gnl_read(char **line, int fd, t_buffer **list_buff)
 {
 	int			int_tab[2];
 	char		*buff;
+	int			return_value;
 
 	if (!(buff = ft_strnew(BUFF_SIZE + 1)))
 		return (-1);
@@ -115,7 +116,11 @@ int		gnl_read(char **line, int fd, t_buffer **list_buff)
 		if (int_tab[0] > 0 && BUFF_SIZE == 1)
 			return (1);
 		if (int_tab[0] > 0 && BUFF_SIZE != 1)
-			return (gnl_addlist(list_buff, fd, &buff[int_tab[0]]));
+		{
+			return_value = gnl_addlist(list_buff, fd, &buff[int_tab[0]]);
+			free(buff);
+			return (return_value);
+		}
 	}
 	return (int_tab[1]);
 }

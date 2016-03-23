@@ -6,7 +6,7 @@
 /*   By: tbalu <tbalu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/29 11:09:01 by tbalu             #+#    #+#             */
-/*   Updated: 2016/03/19 15:56:36 by tbalu            ###   ########.fr       */
+/*   Updated: 2016/03/23 13:21:46 by tbalu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void				ft_putendl_fd(char const *s, int fd);
 
 void				ft_putnbr_fd(int n, int fd);
 
-void				*ft_memset(void *s, int c, size_t n);
+void				ft_memset(void *s, int c, size_t n);
 
 void				ft_bzero(void *s, size_t n);
 

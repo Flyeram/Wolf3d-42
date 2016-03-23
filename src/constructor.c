@@ -6,7 +6,7 @@
 /*   By: tbalu <tbalu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/23 13:01:05 by tbalu             #+#    #+#             */
-/*   Updated: 2016/03/23 13:19:11 by tbalu            ###   ########.fr       */
+/*   Updated: 2016/03/23 16:25:17 by tbalu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ int			constructor_get_data(t_list **list, char **array, t_env *env)
 		x++;
 	}
 	new_elem = ft_lstnew(tab_coords, sizeof(int) * len);
+	free(tab_coords);
 	ft_lsteadd(list, new_elem);
 	return (1);
 }
@@ -77,16 +78,16 @@ int			constructor_loop(t_env *env, char *fname)
 	list = NULL;
 	line = NULL;
 	fd[0] = open(fname, O_RDONLY);
-	ft_putstr("LOL");
 	while ((fd[1] = get_next_line(fd[0], &line)))
 	{
-		ft_putstr("LOL2");
 		if (fd[1] == -1)
 			return (0);
 		array = ft_strsplit(line, ' ');
 		if (!(constructor_get_data(&list, array, env)))
 			return (0);
 		env->map_data->sizey_ar++;
+		ft_free_array(array);
+		free(line);
 	}
 	if (!(env->map_data->map =
 	constructor_conv_list(&list, env->map_data->sizey_ar)))

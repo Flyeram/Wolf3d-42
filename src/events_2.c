@@ -6,7 +6,7 @@
 /*   By: tbalu <tbalu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/07 14:00:10 by tbalu             #+#    #+#             */
-/*   Updated: 2016/03/23 12:40:54 by tbalu            ###   ########.fr       */
+/*   Updated: 2016/03/23 14:51:30 by tbalu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,4 +60,7 @@ void	case_event(t_env *env)
 		ft_bzero(env->event, sizeof(t_event));
 		constructor_map(env, "maps/map_3.map");
 	}
+	if ((int)env->camera->origin.x == 39 && (int)env->camera->origin.y == 39 &&
+		env->map_data->level == 1)
+		exit(3);
 }

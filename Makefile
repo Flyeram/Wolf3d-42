@@ -6,13 +6,13 @@
 #    By: tbalu <tbalu@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/26 18:04:58 by adubois           #+#    #+#              #
-#    Updated: 2016/03/23 13:23:52 by tbalu            ###   ########.fr        #
+#    Updated: 2016/03/23 14:58:45 by tbalu            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = wolf3d
 CC = gcc
-CFLAGS = -Wall -Werror -Wextra -g
+CFLAGS = -Wall -Werror -Wextra -g -O0
 INC_PATH = -I./inc/ -I./libft/ -I./minilibx_macos/
 SRC_PATH = ./src/
 SRCS = main.c image.c constructor.c events.c color.c vector.c draw_image.c \

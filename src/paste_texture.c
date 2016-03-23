@@ -6,7 +6,7 @@
 /*   By: tbalu <tbalu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/10 12:53:27 by tbalu             #+#    #+#             */
-/*   Updated: 2016/03/23 12:33:22 by tbalu            ###   ########.fr       */
+/*   Updated: 2016/03/23 15:03:39 by tbalu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,8 @@ unsigned int	which_texture_wall(t_env *env, int side)
 {
 	if (env->map_data->map[env->value->square_x][env->value->square_y] == 1)
 		return (((abs(-env->texture->wall_time) / 3) % 17) + 10);
+	if (env->map_data->map[env->value->square_x][env->value->square_y] == 3)
+		return (4);
 	if (side == 0)
 	{
 		if (env->value->step.x == 1)
