@@ -6,7 +6,7 @@
 /*   By: tbalu <tbalu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/16 12:57:32 by tbalu             #+#    #+#             */
-/*   Updated: 2016/03/19 16:35:40 by tbalu            ###   ########.fr       */
+/*   Updated: 2016/03/23 12:21:26 by tbalu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ struct			s_map_data
 	int		**hide_map;
 	int		sizex_ar;
 	int		sizey_ar;
+	int		level;
 };
 
 struct			s_value

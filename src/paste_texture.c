@@ -6,7 +6,7 @@
 /*   By: tbalu <tbalu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/10 12:53:27 by tbalu             #+#    #+#             */
-/*   Updated: 2016/03/19 16:58:20 by tbalu            ###   ########.fr       */
+/*   Updated: 2016/03/23 12:33:22 by tbalu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,8 @@ void			draw_sky_ceiling(t_env *env, t_vector *limit, int x)
 
 unsigned int	which_texture_wall(t_env *env, int side)
 {
+	if (env->map_data->map[env->value->square_x][env->value->square_y] == 1)
+		return (((abs(-env->texture->wall_time) / 3) % 17) + 10);
 	if (side == 0)
 	{
 		if (env->value->step.x == 1)
@@ -80,7 +82,7 @@ unsigned int	which_texture_wall(t_env *env, int side)
 		if (env->value->step.y == 1)
 			return (2);
 		else
-			return (((abs(-env->texture->wall_time) / 16) % 2) + 10);
+			return (3);
 	}
 }
 

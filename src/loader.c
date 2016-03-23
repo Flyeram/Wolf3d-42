@@ -6,28 +6,31 @@
 /*   By: tbalu <tbalu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/07 14:54:12 by tbalu             #+#    #+#             */
-/*   Updated: 2016/03/19 16:58:03 by tbalu            ###   ########.fr       */
+/*   Updated: 2016/03/23 12:10:51 by tbalu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <wolf3d.h>
 #include <mlx.h>
 #include <libft.h>
+#include <stdlib.h>
 
 void	load_gif(t_env *env)
 {
 	int		i;
-	char	fname[50];
+	char	*fname;
 
-	i = 0;
-	while (i < 1)
+	i = 1;
+	fname = ft_strnew(150);
+	while (i < 18)
 	{
-		ft_putstr("Hey");
-		env->texture->wall[10 + i] = create_xpm(env->mlx,
-			ft_strcat(ft_strcat(ft_strcat(fname, "texture/wall/dragon_gif/frame"), ft_itoa(i)), ".xpm"));
-		ft_putstr("Hom");
+		ft_strcpy(fname, "texture/wall/dragon_gif/frame");
+		ft_strcat(fname, ft_itoa(i));
+		ft_strcat(fname, ".xpm");
+		env->texture->wall[9 + i] = create_xpm(env->mlx, fname);
 		i++;
 	}
+	free(fname);
 }
 
 int		loader_texture(t_env *env)
@@ -44,10 +47,6 @@ int		loader_texture(t_env *env)
 		"texture/wall/greendragon.xpm");
 	env->texture->wall[1] = create_xpm(env->mlx,
 		"texture/wall/signe.xpm");
-	env->texture->wall[10] = create_xpm(env->mlx,
-		"texture/wall/dragon_gif/frame1.xpm");
-	env->texture->wall[11] = create_xpm(env->mlx,
-		"texture/wall/dragon_gif/frame2.xpm");
 	env->texture->wall[2] = create_xpm(env->mlx,
 		"texture/wall/cocatrice.xpm");
 	env->texture->wall[3] = create_xpm(env->mlx,
@@ -56,6 +55,6 @@ int		loader_texture(t_env *env)
 		"texture/ceiling/castleceiling.xpm");
 	env->texture->tfloor[0] = create_xpm(env->mlx,
 		"texture/floor/castlecarpet.xpm");
-	//load_gif(env);
+	load_gif(env);
 	return (1);
 }

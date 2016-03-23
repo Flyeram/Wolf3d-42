@@ -6,7 +6,7 @@
 /*   By: tbalu <tbalu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/08 12:46:20 by tbalu             #+#    #+#             */
-/*   Updated: 2016/03/19 15:33:00 by tbalu            ###   ########.fr       */
+/*   Updated: 2016/03/23 12:31:30 by tbalu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,11 @@ void		executor(t_env *env)
 	mlx_loop((*env).mlx);
 }
 
-int			main(int ac, char **av)
+int			main(void)
 {
 	t_env	*env;
 
-	if (ac != 2)
-		return (0);
-	if (!(env = constructor_env(1080, 720, av[1])))
+	if (!(env = constructor_env(1080, 720, "maps/map_1.map")))
 		return (0);
 	env->camera->origin = create_vector(18, 22.5, 0);
 	env->camera->dir = create_vector(-1.0, 0, 0);

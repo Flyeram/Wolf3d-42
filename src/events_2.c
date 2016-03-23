@@ -6,7 +6,7 @@
 /*   By: tbalu <tbalu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/07 14:00:10 by tbalu             #+#    #+#             */
-/*   Updated: 2016/03/19 16:21:22 by tbalu            ###   ########.fr       */
+/*   Updated: 2016/03/23 12:40:54 by tbalu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 int		change_weapon(int key_code, t_env *env)
 {
-	if (key_code >= 18 && key_code <= 23)
+	if (key_code >= 18 && key_code <= 20)
 		env->texture->weapon_number = key_code - 18;
 	if (key_code == 53)
 		exit(3);
@@ -47,9 +47,11 @@ int		frame_expose(t_env *env)
 
 void	case_event(t_env *env)
 {
-	if ((int)env->camera->origin.x == 17 && (int)env->camera->origin.y == 21)
+	if ((int)env->camera->origin.x == 1 && (int)env->camera->origin.y == 1 &&
+		env->map_data->level == 0)
 	{
-		env->camera->origin = create_vector(1, 1.5, 0);
+		env->map_data->level = 1;
+		env->camera->origin = create_vector(1.1, 1.5, 0);
 		env->camera->dir = create_vector(1.0, 0, 0);
 		env->camera->plane = create_vector(0.0, -0.66, 0);
 		ft_free_iarray((void ***)&env->map_data->map, env->map_data->sizey_ar);

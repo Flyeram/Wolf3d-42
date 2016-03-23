@@ -6,7 +6,7 @@
 /*   By: tbalu <tbalu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/23 11:02:21 by tbalu             #+#    #+#             */
-/*   Updated: 2016/03/19 11:39:03 by tbalu            ###   ########.fr       */
+/*   Updated: 2016/03/23 13:03:59 by tbalu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void		clear_image(t_image *image)
 	int		off_y;
 
 	off_y = (*image).width * (*image).height * 4 - 1;
-	(*image).cimg = ft_memset((*image).cimg, 0, off_y);
+	ft_bzero(image->cimg, sizeof(image->cimg));
 }
 
 /*
