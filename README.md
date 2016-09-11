@@ -10,4 +10,4 @@ You can install it on Mac with just a make re.
 
 Use the arrows to move yourself and the camera and hold Shift to run. Use 1-2-3 to switch weapons.
 Escape to exit the game.
-You can pass through some walls.
+You can go through some walls.
